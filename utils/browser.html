@@ -1,0 +1,59 @@
+<!--
+@license
+Copyright (c) 2017 The StartPolymer Project Authors. All rights reserved.
+This code may only be used under the MIT License found at https://github.com/StartPolymer/license
+The complete set of authors may be found at https://github.com/StartPolymer/authors
+The complete set of contributors may be found at https://github.com/StartPolymer/contributors
+-->
+
+<script>
+
+(function() {
+  'use strict';
+
+  window.S = window.S || {};
+  S.Utils = S.Utils || {};
+
+  let isIE = /*@cc_on!@*/false || !!document.documentMode,
+      isEdge = !isIE && !!window.StyleMedia;
+
+  /**
+   * Module that provides a number of properties for detection of browser types and features.
+   * Sources: http://stackoverflow.com/questions/9847580/how-to-detect-safari-chrome-ie-firefox-and-opera-browser
+   *          http://stackoverflow.com/questions/4565112/javascript-how-to-find-out-if-the-user-browser-is-chrome
+   *
+   * @namespace
+   * @memberOf S.Utils
+   */
+  S.Utils.Browser = {
+    // Browser has touch screen
+    hasTouchScreen: ('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch || !!(window.navigator.msPointerEnabled && window.MSGesture),
+    // Browser has Web Components
+    hasWebComponents: 'registerElement' in document && 'import' in document.createElement('link') && 'content' in document.createElement('template'),
+    // Env is Apache Cordova
+    isCordova: !!window.cordova,
+    // Edge 12+
+    isEdge: isEdge,
+    // Firefox 1.0+
+    isFirefox: typeof InstallTrigger !== 'undefined',
+    // Chrome 1+
+    isChrome: !!window.chrome && !!window.chrome.webstore,
+    // Chrome on iOS
+    isChromeOnIOS: /CriOS/.test(navigator.userAgent),
+    // Chromium / Blink engine detection
+    isChromiumBased: !!window.chrome && !isEdge,
+    // Internet Explorer 6-11
+    isIE: isIE,
+    // Opera 8.0+
+    isOpera: (!!window.opr && !!opr.addons) || !!window.opera || /OPR/.test(navigator.userAgent),
+    // Safari 3.0+ "[object HTMLElementConstructor]"
+    isSafari: Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0 || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification),
+    // Browser on Android
+    onAndroid: /Android/.test(navigator.userAgent),
+    // Browser on iOS
+    onIOS: /(iPhone|iPad|iPod)/.test(navigator.platform)
+  };
+
+})();
+
+</script>
