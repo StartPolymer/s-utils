@@ -1,0 +1,16 @@
+{
+  "name": "s-utils",
+  "version": "0.1.0",
+  "description": "Polymer utility functions and mixins.",
+  "main": "index.js",
+  "repository": "https://github.com/StartPolymer/s-utils",
+  "author": "The StartPolymer Project Authors (https://github.com/StartPolymer/authors)",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-html": "^0.5.1",
+    "babel-preset-env": "^1.6.0"
+  },
+  "scripts": {
+    "es5": "babel-html -s utils -d utils-es5"
+  }
+}

@@ -1,0 +1,93 @@
+<!--
+@license
+Copyright (c) 2017 The StartPolymer Project Authors. All rights reserved.
+This code may only be used under the MIT License found at https://github.com/StartPolymer/license
+The complete set of authors may be found at https://github.com/StartPolymer/authors
+The complete set of contributors may be found at https://github.com/StartPolymer/contributors
+-->
+
+<script>
+
+(function() {
+  'use strict';
+
+  window.S = window.S || {};
+  S.Utils = S.Utils || {};
+
+  // See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
+  // for details over the differences between throttle and debounce techniques.
+
+  /**
+   * Creates a throttled function that only invokes callback at most once per every wait milliseconds.
+   * Inspired by https://stackoverflow.com/a/42975776/1614237
+   *
+   * @static
+   * @memberOf S.Utils
+   * @category Function
+   * @param {Function} callback The function to throttle.
+   * @param {number} [wait=0] The number of milliseconds to throttle invocations to.
+   * @param {number} [limit=1] The number of times that function should be called within the time limit.
+   * @param {Object} [scope=this] Scope refers to the current context of callback.
+   */
+  S.Utils.throttle = (callback, wait = 0, limit = 1, scope = this) => {
+    let calledCount = 0;
+
+    // Refesh the `calledCount` varialbe after the `wait` has been passed.
+    setInterval(() => {
+      calledCount = 0;
+    }, wait);
+
+    const throttled = (...args) => {
+      // Checking the limit (if limit is exceeded then do not call the passed function.
+      if (limit > calledCount) {
+        calledCount++;
+        callback.apply(scope, args);
+      }
+    }
+
+    return throttled;
+  };
+
+  /**
+   * Creates a throttled function that only invokes callback at most once per frame using requestAnimationFrame.
+   * Ideal using for mouse, resize, scroll events.
+   * Example: addEventListener('resize', S.Utils.throttleRaf(_onOptimizedResize));
+   * Inspired by raf-throttle: https://github.com/wuct/raf-throttle
+   *
+   * @static
+   * @memberOf S.Utils
+   * @category Function
+   * @param {Function} callback The function to throttle.
+   * @param {number} [limit=1] The number of frames that function should be called once every X frames.
+   * @param {Object} [scope=this] Scope refers to the current context of callback.
+   */
+  S.Utils.throttleRaf = (callback, limit = 1, scope = this) => {
+    let requestId,
+        calledCount = -1;
+
+    const later = (scope, args) => () => {
+      requestId = null;
+      calledCount++;
+      if (calledCount === 0) {
+        callback.apply(scope, args);
+      } else if (calledCount === limit) {
+        calledCount = 0;
+        callback.apply(scope, args);
+      }
+    }
+
+    const throttled = (...args) => {
+      if ((requestId === null) || (requestId === undefined)) {
+        requestId = requestAnimationFrame(later(scope, args));
+      }
+    }
+
+    throttled.cancel = () =>
+      cancelAnimationFrame(requestId);
+
+    return throttled;
+  };
+
+})();
+
+</script>
