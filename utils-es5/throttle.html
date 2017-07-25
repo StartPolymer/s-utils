@@ -40,7 +40,7 @@ The complete set of contributors may be found at https://github.com/StartPolymer
     var calledCount = 0;
 
     // Refesh the `calledCount` varialbe after the `wait` has been passed.
-    setInterval(function () {
+    window.setInterval(function () {
       calledCount = 0;
     }, wait);
 
@@ -98,12 +98,12 @@ The complete set of contributors may be found at https://github.com/StartPolymer
       }
 
       if (requestId === null || requestId === undefined) {
-        requestId = requestAnimationFrame(later(scope, args));
+        requestId = window.requestAnimationFrame(later(scope, args));
       }
     };
 
     throttled.cancel = function () {
-      return cancelAnimationFrame(requestId);
+      return window.cancelAnimationFrame(requestId);
     };
 
     return throttled;
