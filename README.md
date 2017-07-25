@@ -1,4 +1,6 @@
-# s-utils
+# S.Utils
+
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://help.github.com/articles/about-pull-requests/)
 
 Polymer utility functions and mixins.
 
@@ -22,7 +24,7 @@ Polymer utility functions and mixins.
 
 ## Functions
 
-### throttle()
+### throttle() from throttle.html
 
 Creates a throttled function that only invokes `callback` at most once per every `wait` milliseconds.
 
@@ -41,7 +43,7 @@ setInterval(function () {
 
 > Inspired by https://stackoverflow.com/a/42975776/1614237
 
-### throttleRaf()
+### throttleRaf() from throttle.html
 
 Creates a throttled function that only invokes `callback` at most once per frame using `requestAnimationFrame`.
 Ideal using for mouse, resize, scroll events.
@@ -53,3 +55,23 @@ window.addEventListener('resize', S.Utils.throttleRaf(this._onOptimizedResize, 1
 ```
 
 > Inspired by [raf-throttle](https://github.com/wuct/raf-throttle)
+
+### timestamp() from date.html
+
+Returns a timestamp measured in milliseconds, accurate to five thousandths of a millisecond (5 microseconds).
+
+```js
+S.Utils.timestamp()
+```
+
+## Modules
+
+### Browser from browser.html
+
+Module that provides a number of properties for detection of browser types and features.
+
+```js
+S.Utils.Browser.hasTouchScreen
+S.Utils.Browser.isIE
+S.Utils.Browser.onAndroid
+```
