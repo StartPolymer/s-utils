@@ -43,15 +43,13 @@ setInterval(function () {
 
 > Inspired by https://stackoverflow.com/a/42975776/1614237
 
-### throttleRaf() from throttle.html
+### throttlePerFrame() from throttle.html
 
 Creates a throttled function that only invokes `callback` at most once per frame using `requestAnimationFrame`.
 Ideal using for mouse, resize, scroll events.
 
-Run `_onOptimizedResize` once every 10 frames.
-
 ```js
-window.addEventListener('resize', S.Utils.throttleRaf(this._onOptimizedResize, 10));
+window.addEventListener('resize', S.Utils.throttlePerFrame(this._onOptimizedResize));
 ```
 
 > Inspired by [raf-throttle](https://github.com/wuct/raf-throttle)

@@ -60,7 +60,7 @@ The complete set of contributors may be found at https://github.com/StartPolymer
   /**
    * Creates a throttled function that only invokes callback at most once per frame using requestAnimationFrame.
    * Ideal using for mouse, resize, scroll events.
-   * Example: addEventListener('resize', S.Utils.throttleRaf(_onOptimizedResize));
+   * Example: window.addEventListener('resize', S.Utils.throttlePerFrame(this._onOptimizedResize));
    * Inspired by raf-throttle: https://github.com/wuct/raf-throttle
    *
    * @static
@@ -70,7 +70,7 @@ The complete set of contributors may be found at https://github.com/StartPolymer
    * @param {number} [limit=1] The number of frames that function should be called once every X frames.
    * @param {Object} [scope] Scope refers to the current context of callback.
    */
-  S.Utils.throttleRaf = function (callback) {
+  S.Utils.throttlePerFrame = function (callback) {
     var limit = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
     var scope = arguments[2];
 
