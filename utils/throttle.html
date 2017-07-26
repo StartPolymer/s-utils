@@ -27,9 +27,9 @@ The complete set of contributors may be found at https://github.com/StartPolymer
    * @param {Function} callback The function to throttle.
    * @param {number} [wait=0] The number of milliseconds to throttle invocations to.
    * @param {number} [limit=1] The number of times that function should be called within the time limit.
-   * @param {Object} [scope=this] Scope refers to the current context of callback.
+   * @param {Object} [scope] Scope refers to the current context of callback.
    */
-  S.Utils.throttle = (callback, wait = 0, limit = 1, scope = this) => {
+  S.Utils.throttle = (callback, wait = 0, limit = 1, scope) => {
     let calledCount = 0;
 
     // Refesh the `calledCount` varialbe after the `wait` has been passed.
@@ -59,9 +59,9 @@ The complete set of contributors may be found at https://github.com/StartPolymer
    * @category Function
    * @param {Function} callback The function to throttle.
    * @param {number} [limit=1] The number of frames that function should be called once every X frames.
-   * @param {Object} [scope=this] Scope refers to the current context of callback.
+   * @param {Object} [scope] Scope refers to the current context of callback.
    */
-  S.Utils.throttleRaf = (callback, limit = 1, scope = this) => {
+  S.Utils.throttleRaf = (callback, limit = 1, scope) => {
     let requestId,
         calledCount = -1;
 

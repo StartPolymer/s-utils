@@ -12,8 +12,6 @@ The complete set of contributors may be found at https://github.com/StartPolymer
 (function () {
   'use strict';
 
-  var _this = this;
-
   window.S = window.S || {};
   S.Utils = S.Utils || {};
 
@@ -30,12 +28,12 @@ The complete set of contributors may be found at https://github.com/StartPolymer
    * @param {Function} callback The function to throttle.
    * @param {number} [wait=0] The number of milliseconds to throttle invocations to.
    * @param {number} [limit=1] The number of times that function should be called within the time limit.
-   * @param {Object} [scope=this] Scope refers to the current context of callback.
+   * @param {Object} [scope] Scope refers to the current context of callback.
    */
   S.Utils.throttle = function (callback) {
     var wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
     var limit = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
-    var scope = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : _this;
+    var scope = arguments[3];
 
     var calledCount = 0;
 
@@ -70,11 +68,11 @@ The complete set of contributors may be found at https://github.com/StartPolymer
    * @category Function
    * @param {Function} callback The function to throttle.
    * @param {number} [limit=1] The number of frames that function should be called once every X frames.
-   * @param {Object} [scope=this] Scope refers to the current context of callback.
+   * @param {Object} [scope] Scope refers to the current context of callback.
    */
   S.Utils.throttleRaf = function (callback) {
     var limit = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : _this;
+    var scope = arguments[2];
 
     var requestId = void 0,
         calledCount = -1;
