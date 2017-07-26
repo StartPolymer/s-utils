@@ -33,7 +33,7 @@ The complete set of contributors may be found at https://github.com/StartPolymer
     let calledCount = 0;
 
     // Refesh the `calledCount` varialbe after the `wait` has been passed.
-    window.setInterval(() => {
+    let timerId = window.setInterval(() => {
       calledCount = 0;
     }, wait);
 
@@ -44,6 +44,9 @@ The complete set of contributors may be found at https://github.com/StartPolymer
         callback.apply(scope, args);
       }
     }
+
+    throttled.cancel = () =>
+      window.clearInterval(timerId);
 
     return throttled;
   };
