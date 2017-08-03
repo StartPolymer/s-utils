@@ -1,8 +1,8 @@
-# S.Utils
+# StartPolymer Utilities
 
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://help.github.com/articles/about-pull-requests/)
 
-Polymer utility functions and mixins.
+Polymer utility functions, mixins, modules and styles.
 
 ## Install
 

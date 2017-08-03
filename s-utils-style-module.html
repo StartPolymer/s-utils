@@ -1,0 +1,60 @@
+<!--
+@license
+Copyright (c) 2017 The StartPolymer Project Authors. All rights reserved.
+This code may only be used under license found at https://github.com/StartPolymer/license
+The complete set of authors may be found at https://github.com/StartPolymer/authors
+The complete set of contributors may be found at https://github.com/StartPolymer/contributors
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+
+<dom-module id="s-utils-style-module">
+<template>
+
+<style>
+
+/* [hidden] is a lie */
+/* https://meowni.ca/hidden.is.a.lie.html */
+[hidden] {
+  display: none !important;
+}
+
+/* Inline Flexbox container for vertical center <iron-icon> in text. */
+[s-icon-container] {
+  @apply(--layout-inline);
+  @apply(--layout-center);
+  @apply(--layout-wrap);
+}
+
+/* Modern scrollbar. */
+[s-scrollbar] {
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+:host-context(.onEdgeBrowser) [s-scrollbar] {
+  padding-right: calc(var(--small-gutter, 8px) + 4px);
+}
+
+[s-scrollbar]::-webkit-scrollbar {
+  width: var(--scrollbar-width, 8px);
+}
+
+[s-scrollbar]::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(3, 3, 3, 0.3);
+  border-radius: var(--border-radius, 2px);
+}
+
+[s-scrollbar]::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-color, var(--disabled-text-color));
+  border-radius: var(--border-radius, 2px);
+}
+
+/* Spacer in Flexbox layout. */
+[s-spacer] {
+  @apply(--layout-flex);
+}
+
+</style>
+
+</template>
+</dom-module>
